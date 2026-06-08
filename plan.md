@@ -224,12 +224,13 @@ until Phase 11 rules are in place.
 {
   "category": "feature",
   "priority": 13,
-  "description": "Edit toggle for authorized editors; inline-editable scoped text fields; save to Firestore; cancel discards. Visitors always see the view version.",
+  "description": "Edit toggle for authorized editors; inline-editable scoped fields (rich-text body + plain-text short fields); save to Firestore; cancel discards. Visitors always see the view version.",
   "steps": [
     "Edit toggle visible only when the logged-in user has rights to the current page (program editor -> own page; admin -> any page)",
-    "Inline editable text for the scoped fields per the spec's editable-scope table (program pages, About, menu/resource pages, Home)",
+    "Rich-text WYSIWYG editor (TipTap/ProseMirror or equiv) for long-form body fields, restricted to bold/italic/lists/links/H2-H3; plain-text inputs for short fields, per the spec's editable-scope + rich-text sections",
+    "Sanitize rich text against an allow-list on save AND on render; strip script/iframe/on*/style; store sanitized HTML in Firestore",
     "Save writes changed fields to the matching Firestore doc with error handling; Cancel reverts unsaved edits",
-    "Logged-out/unauthorized users see no edit affordances; view version is byte-identical to Part 1 render"
+    "Logged-out/unauthorized users see no edit affordances; rendered view version is sanitized and visually matches Part 1"
   ],
   "passes": false
 }
