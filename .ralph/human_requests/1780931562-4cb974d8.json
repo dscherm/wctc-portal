@@ -1,0 +1,19 @@
+{
+  "id": "1780931562-4cb974d8",
+  "task": "wctc",
+  "agent": "smart_gate",
+  "phase": "coverage-gap",
+  "criterion": null,
+  "category": "no_tests_for_changed_source",
+  "question": "The ralph gate for project 'wctc' is blocked because the following changed source files have no tests mapped and no tests were run:\n\n  - .omc/state/hud-stdin-cache.json\n\nOptions:\n  1. APPROVE: allow this commit to pass without tests (one-time override).\n  2. BLOCK: fail the gate. Tests must be written before commit.\n  3. MANUAL: I will manually verify these changes and approve.\n  4. MAP: I will add these files to gate.test_map and re-run the gate.",
+  "options": [
+    "APPROVE",
+    "BLOCK",
+    "MANUAL",
+    "MAP"
+  ],
+  "free_text_allowed": true,
+  "blocking": true,
+  "timeout_seconds": 86400,
+  "created_at": "2026-06-08T15:12:42.346456+00:00"
+}
