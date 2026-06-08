@@ -1,0 +1,89 @@
+# Auto-deploy the WCTC portal to Firebase Hosting on push to master.
+#
+# ──────────────────────────────────────────────────────────────────────────
+# DORMANT UNTIL CONFIGURED. This workflow is safe to commit before you have a
+# Firebase account. The build job always runs; the deploy job is GUARDED and
+# is SKIPPED (not failed) until the FIREBASE_SERVICE_ACCOUNT secret exists.
+#
+# To activate (one-time, at handoff — see DEPLOY.md for the full walkthrough):
+#   1. Create your Firebase project and put its id in .firebaserc
+#   2. Generate a service-account key:
+#        Firebase console → Project settings → Service accounts
+#        → "Generate new private key"  (downloads a JSON file)
+#   3. Add it as a GitHub repo secret named FIREBASE_SERVICE_ACCOUNT:
+#        GitHub repo → Settings → Secrets and variables → Actions
+#        → New repository secret → paste the FULL JSON file contents
+#   4. Set the project id below (FIREBASE_PROJECT_ID env) to match .firebaserc
+# ──────────────────────────────────────────────────────────────────────────
+
+name: Deploy to Firebase Hosting
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch: {}   # allow manual runs from the Actions tab
+
+env:
+  # Replace with your real Firebase project id once it exists (must match .firebaserc).
+  FIREBASE_PROJECT_ID: REPLACE_WITH_FIREBASE_PROJECT_ID
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      # Whether the deploy secret is configured. The `secrets` context is NOT
+      # available in a job-level `if:`, so we probe it here (where it IS
+      # available) and expose the result as a job output for the deploy guard.
+      deployable: ${{ steps.check.outputs.deployable }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+      - run: npm test --if-present
+      - run: npm run build
+
+      - name: Check whether Firebase deploy is configured
+        id: check
+        env:
+          SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          if [ -n "$SA" ]; then
+            echo "deployable=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "deployable=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::FIREBASE_SERVICE_ACCOUNT secret not set — skipping deploy. See DEPLOY.md."
+          fi
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+          retention-days: 1
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    # GUARD: skip cleanly until the deploy secret has been added.
+    if: needs.build.outputs.deployable == 'true'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - name: Deploy to Firebase Hosting (live channel)
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          projectId: ${{ env.FIREBASE_PROJECT_ID }}
+          channelId: live
