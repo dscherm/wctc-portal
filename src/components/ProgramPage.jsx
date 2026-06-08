@@ -18,9 +18,18 @@ export default function ProgramPage() {
       </p>
 
       <header className="program__header">
-        <span className="program__icon" style={{ borderColor: program.color }} aria-hidden="true">
-          {program.icon}
-        </span>
+        {program.badge ? (
+          <img
+            className="program__badge"
+            src={program.badge}
+            alt={`${program.name} program`}
+            style={{ borderColor: program.color }}
+          />
+        ) : (
+          <span className="program__icon" style={{ borderColor: program.color }} aria-hidden="true">
+            {program.icon}
+          </span>
+        )}
         <div>
           <h1>{program.name}</h1>
           <p className="page__lede">{program.tagline}</p>

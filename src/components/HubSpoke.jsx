@@ -62,7 +62,11 @@ export default function HubSpoke() {
               <li key={p.slug}>
                 <Link to={`/programs/${p.slug}`} className="program-card">
                   <span className="program-card__icon" style={{ borderColor: p.color }} aria-hidden="true">
-                    {p.icon}
+                    {p.badge ? (
+                      <img className="program-card__img" src={p.badge} alt="" />
+                    ) : (
+                      p.icon
+                    )}
                   </span>
                   <span className="program-card__text">
                     <span className="program-card__name">{p.name}</span>

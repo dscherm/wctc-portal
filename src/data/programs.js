@@ -1,4 +1,10 @@
-// The 7 CTE programs. Placeholder scaffold — every field has the correct shape;
+// WACTC CTE programs. The 10 "real" programs mirror the live Woonsocket Area
+// Career and Technical Center site (names, pipe-style taglines, and badge tile
+// images sourced from woonsocketschools.com). Criminal Justice and Business are
+// kept as project extras (no live badge yet — emoji icon + TODO content).
+//
+// Badge images live in /public/assets/programs/*.jpg (the real WACTC tiles).
+// All other fields are placeholder scaffold — every field has the correct shape;
 // replace TODO content (and add real teacher photos to public/assets/) later.
 //
 // Each program renders all 6 spec-required sections:
@@ -20,9 +26,7 @@ const placeholderSequence = [
   { grade: 'Senior', courses: ['TODO: Capstone / advanced course'] },
 ]
 
-const base = (name, icon, color) => ({
-  icon,
-  color,
+const base = (name) => ({
   overview: `TODO: Overview of the ${name} program — what students learn, hands-on experiences, and what makes it distinctive.`,
   teachers: [placeholderTeacher(name)],
   sequence: placeholderSequence,
@@ -37,48 +41,117 @@ const base = (name, icon, color) => ({
   ],
 })
 
+// badge: path to the real WACTC program tile (in /public/assets/programs/).
+// icon: emoji fallback shown when no badge image exists.
 export const programs = [
   {
-    slug: 'video-production',
-    name: 'Video Production',
-    tagline: 'Filmmaking, editing & media production',
-    ...base('Video Production', '🎬', 'var(--wctc-blue)'),
+    slug: 'automotive',
+    name: 'Automotive Technology',
+    tagline: 'Transportation',
+    icon: '🔧',
+    color: 'var(--wctc-yellow)',
+    badge: '/assets/programs/auto-tech.jpg',
+    ...base('Automotive Technology'),
+  },
+  {
+    slug: 'computer-science',
+    name: 'Computer Science',
+    tagline: 'Game Design · P-TECH',
+    icon: '💻',
+    color: 'var(--wctc-blue)',
+    badge: '/assets/programs/computer-science.jpg',
+    ...base('Computer Science'),
+  },
+  {
+    slug: 'digital-media',
+    name: 'Digital Media',
+    tagline: 'Video, audio & media production',
+    icon: '🎬',
+    color: 'var(--wctc-blue)',
+    badge: '/assets/programs/digital-media.jpg',
+    ...base('Digital Media'),
+  },
+  {
+    slug: 'biotechnology',
+    name: 'Biotechnology',
+    tagline: 'Biomedical',
+    icon: '🧬',
+    color: 'var(--wctc-green)',
+    badge: '/assets/programs/biotechnology.jpg',
+    ...base('Biotechnology'),
+  },
+  {
+    slug: 'construction',
+    name: 'Construction Technology',
+    tagline: 'Home Building · Pre-Engineering',
+    icon: '🏗️',
+    color: 'var(--wctc-green)',
+    badge: '/assets/programs/construction.jpg',
+    ...base('Construction Technology'),
+  },
+  {
+    slug: 'graphic-design',
+    name: 'Graphic Design',
+    tagline: 'Printing & Visual Arts',
+    icon: '🎨',
+    color: 'var(--wctc-red)',
+    badge: '/assets/programs/graphic-design.jpg',
+    ...base('Graphic Design'),
+  },
+  {
+    slug: 'hospitality',
+    name: 'Hospitality',
+    tagline: 'Tourism',
+    icon: '🧳',
+    color: 'var(--wctc-yellow)',
+    badge: '/assets/programs/hospitality.jpg',
+    ...base('Hospitality'),
   },
   {
     slug: 'child-studies',
     name: 'Child Studies',
-    tagline: 'Early childhood education & development',
-    ...base('Child Studies', '🧸', 'var(--wctc-red)'),
+    tagline: 'Human Services',
+    icon: '🧸',
+    color: 'var(--wctc-red)',
+    badge: '/assets/programs/child-studies.jpg',
+    ...base('Child Studies'),
   },
   {
-    slug: 'automotive',
-    name: 'Automotive',
-    tagline: 'Vehicle service, repair & diagnostics',
-    ...base('Automotive', '🔧', 'var(--wctc-yellow)'),
+    slug: 'culinary-arts',
+    name: 'Culinary Arts',
+    tagline: 'Baking',
+    icon: '🍳',
+    color: 'var(--wctc-red)',
+    badge: '/assets/programs/culinary-arts.jpg',
+    ...base('Culinary Arts'),
   },
   {
-    slug: 'construction',
-    name: 'Construction',
-    tagline: 'Building trades & real-world projects',
-    ...base('Construction', '🏗️', 'var(--wctc-green)'),
+    slug: 'health-careers',
+    name: 'Health Careers',
+    tagline: 'Patient care & medical pathways',
+    icon: '⚕️',
+    color: 'var(--wctc-green)',
+    badge: '/assets/programs/health-careers.jpg',
+    ...base('Health Careers'),
   },
+  // ---- Project extras (not currently on the live WACTC site) ----
   {
     slug: 'criminal-justice',
     name: 'Criminal Justice',
     tagline: 'Law enforcement, legal studies & careers',
-    ...base('Criminal Justice', '⚖️', 'var(--wctc-blue)'),
+    icon: '⚖️',
+    color: 'var(--wctc-blue)',
+    badge: null, // TODO: add real badge image if WACTC adds this program
+    ...base('Criminal Justice'),
   },
   {
     slug: 'business',
     name: 'Business',
     tagline: 'Entrepreneurship, marketing & business tech',
-    ...base('Business', '📈', 'var(--wctc-red)'),
-  },
-  {
-    slug: 'biotechnology',
-    name: 'Biotechnology',
-    tagline: 'Lab science, research & career pathways',
-    ...base('Biotechnology', '🧬', 'var(--wctc-green)'),
+    icon: '📈',
+    color: 'var(--wctc-red)',
+    badge: null, // TODO: add real badge image if WACTC adds this program
+    ...base('Business'),
   },
 ]
 

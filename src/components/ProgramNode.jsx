@@ -11,9 +11,13 @@ export default function ProgramNode({ program, style }) {
       aria-label={`${program.name} — ${program.tagline}`}
     >
       <span className="hub__node-circle" style={{ borderColor: program.color }}>
-        <span className="hub__node-icon" aria-hidden="true">
-          {program.icon}
-        </span>
+        {program.badge ? (
+          <img className="hub__node-img" src={program.badge} alt="" />
+        ) : (
+          <span className="hub__node-icon" aria-hidden="true">
+            {program.icon}
+          </span>
+        )}
       </span>
       <span className="hub__node-label">{program.name}</span>
     </Link>
