@@ -1,0 +1,64 @@
+.resources {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+
+.resources__title {
+  margin: 0 0 14px;
+  font-size: 1.05rem;
+  color: var(--wctc-navy);
+  border-bottom: 3px solid var(--surface-2);
+  padding-bottom: 10px;
+}
+
+.resources__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.resources__item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 10px;
+  border-radius: 10px;
+  color: var(--ink);
+  border: 1px solid transparent;
+}
+.resources__item:hover {
+  text-decoration: none;
+  background: var(--surface-2);
+  border-color: var(--line);
+}
+.resources__icon {
+  flex: 0 0 auto;
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+.resources__item-title {
+  display: block;
+  font-weight: 700;
+  color: var(--wctc-navy);
+  font-size: 0.95rem;
+}
+.resources__item-blurb {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+}
+
+/* Docked, fixed-width on desktop (matches the blueprint side menu) */
+@media (min-width: 900px) {
+  .resources {
+    flex: 0 0 300px;
+    align-self: flex-start;
+    position: sticky;
+    top: 84px;
+  }
+}

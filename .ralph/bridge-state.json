@@ -1,0 +1,24 @@
+{
+  "pipeline_id": "dab69aeb",
+  "started_at": "2026-06-08T15:06:34.652811+00:00",
+  "phase": "intake",
+  "spec_path": null,
+  "plan_source": "plan.md",
+  "tasks": [],
+  "current_task_index": 0,
+  "stats": {
+    "tasks_completed": 0,
+    "tasks_failed": 0,
+    "gate_passes": 0,
+    "gate_fails": 0,
+    "observations_recorded": 0
+  },
+  "config": {
+    "interactive_mode": true,
+    "skip_deep_interview": false,
+    "skip_deslop": false,
+    "auto_commit": false,
+    "auto_observe": true
+  },
+  "updated_at": "2026-06-08T15:06:34.652811+00:00"
+}

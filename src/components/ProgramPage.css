@@ -1,0 +1,113 @@
+.program__header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 8px;
+}
+.program__icon {
+  flex: 0 0 auto;
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  font-size: 2.2rem;
+  background: var(--surface);
+  border: 3px solid var(--line);
+  border-radius: 50%;
+  box-shadow: var(--shadow);
+}
+
+.program__list {
+  margin: 0;
+  padding-left: 22px;
+}
+.program__list li {
+  margin: 6px 0;
+}
+
+.program__teachers {
+  display: grid;
+  gap: 18px;
+}
+
+.teacher-card {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px;
+}
+.teacher-card__photo .placeholder-img,
+.teacher-card__photo img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.teacher-card__name {
+  margin: 0;
+}
+.teacher-card__title {
+  margin: 2px 0 10px;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+.teacher-card__contact {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+}
+.teacher-card__contact li {
+  margin: 2px 0;
+  font-size: 0.95rem;
+}
+
+/* Course sequence roadmap */
+.sequence {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  counter-reset: yr;
+}
+.sequence__year {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--wctc-blue);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 14px;
+}
+.sequence__grade {
+  display: block;
+  font-weight: 800;
+  color: var(--wctc-navy);
+  margin-bottom: 8px;
+}
+.sequence__courses {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.program__work {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+.program__work-item h3 {
+  margin: 12px 0 4px;
+}
+.program__work-item .placeholder-img {
+  min-height: 120px;
+}
+
+@media (max-width: 560px) {
+  .teacher-card {
+    grid-template-columns: 1fr;
+  }
+}

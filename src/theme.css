@@ -1,0 +1,34 @@
+/* WCTC brand theme tokens.
+   Palette drawn from the multicolor "WCTC" logo: blue / red / yellow / green. */
+:root {
+  /* Brand colors */
+  --wctc-blue: #1a73e8;
+  --wctc-red: #ea4335;
+  --wctc-yellow: #f9ab00;
+  --wctc-green: #34a853;
+
+  --wctc-blue-dark: #1557b0;
+  --wctc-navy: #1a2b4a;
+
+  /* Neutrals */
+  --ink: #1f2733;
+  --ink-soft: #4a5568;
+  --line: #d9dee7;
+  --bg: #f5f7fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f9;
+
+  /* Accents for placeholder/TODO markers */
+  --todo-bg: #fff4d6;
+  --todo-border: #f0c000;
+  --todo-ink: #7a5b00;
+
+  /* Layout */
+  --maxw: 1180px;
+  --radius: 14px;
+  --shadow: 0 6px 24px rgba(26, 43, 74, 0.1);
+  --shadow-lg: 0 14px 40px rgba(26, 43, 74, 0.16);
+
+  /* Responsive hub breakpoint (spec: radial >=900px, grid <900px) */
+  --hub-breakpoint: 900px;
+}

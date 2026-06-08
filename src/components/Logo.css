@@ -1,0 +1,37 @@
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  line-height: 1;
+  user-select: none;
+}
+
+.logo__letter {
+  display: inline-block;
+  text-shadow: 0 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* The two-tone "stacked" feel of the blueprint wordmark */
+.logo__letter:nth-child(odd) {
+  transform: translateY(-2%);
+}
+
+.logo--sm {
+  font-size: 1.5rem;
+}
+.logo--md {
+  font-size: 2.4rem;
+}
+.logo--lg {
+  font-size: 4rem;
+}
+.logo--xl {
+  font-size: clamp(4rem, 12vw, 8.5rem);
+}
+
+.logo__img {
+  height: 1em;
+  width: auto;
+}

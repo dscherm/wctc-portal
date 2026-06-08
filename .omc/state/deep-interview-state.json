@@ -1,0 +1,16 @@
+{
+  "active": true,
+  "current_phase": "deep-interview",
+  "state": {
+    "interview_id": "wctc-portal-2026-06-08",
+    "type": "greenfield",
+    "initial_idea": "Build the WCTC website portal. Hub-and-spoke homepage with central WCTC logo linking to About WCTC, 7 CTE program pages (Video Production, Child Studies, Automotive, Construction, Criminal Justice, Business, Biotechnology), and resource pages (School Counselor, Leadership, Graduation Requirements, Program Sequences). Build with ralph-universal harness in interactive bridge mode. Host locally now, hand off to Firebase hosting later.",
+    "initial_context_summary": null,
+    "rounds": [],
+    "current_ambiguity": 1.0,
+    "threshold": 0.2,
+    "codebase_context": null,
+    "challenge_modes_used": [],
+    "ontology_snapshots": []
+  }
+}
